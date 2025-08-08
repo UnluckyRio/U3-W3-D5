@@ -1,9 +1,23 @@
 /* Stili principali dell'applicazione */
 .app {
   height: 100vh;
-  background-color: #000000;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2a2a2a 100%);
   color: #ffffff;
   overflow: hidden;
+  position: relative;
+}
+
+.app::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(255, 59, 48, 0.03) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(255, 107, 71, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Layout principale */
@@ -15,12 +29,15 @@
 .main-content-col {
   position: relative;
   z-index: 50;
+  padding: 0;
+  margin-left: 250px; /* Larghezza della sidebar */
 }
 
 .main-content {
   height: 100vh;
   overflow-y: auto;
-  padding-left: 0;
+  padding: 0;
+  width: 100%;
 }
 
 /* Placeholder per pagine in sviluppo */
@@ -38,20 +55,24 @@
 
 /* Scrollbar personalizzata */
 .main-content::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 .main-content::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: rgba(26, 26, 26, 0.5);
+  border-radius: 5px;
 }
 
 .main-content::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: linear-gradient(135deg, rgba(255, 59, 48, 0.6) 0%, rgba(255, 107, 71, 0.4) 100%);
+  border-radius: 5px;
+  border: 2px solid rgba(26, 26, 26, 0.5);
+  transition: all 0.3s ease;
 }
 
 .main-content::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: linear-gradient(135deg, rgba(255, 59, 48, 0.8) 0%, rgba(255, 107, 71, 0.6) 100%);
+  box-shadow: 0 0 10px rgba(255, 59, 48, 0.3);
 }
 
 /* Responsive */
@@ -63,6 +84,10 @@
   .sidebar-col {
     position: relative;
     height: auto;
+  }
+  
+  .main-content-col {
+    margin-left: 0; /* Rimuovi margin su mobile */
   }
   
   .main-content {
@@ -101,6 +126,9 @@
 .container-fluid {
   padding-left: 0;
   padding-right: 0;
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
 
 .row {

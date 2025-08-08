@@ -1,6 +1,12 @@
 /* Stili per la Sidebar */
 .sidebar {
-  background-color: #1a1a1a;
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 26, 0.95) 0%,
+    rgba(42, 42, 42, 0.9) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   color: #ffffff;
   height: 100vh;
   width: 250px;
@@ -9,7 +15,9 @@
   top: 0;
   padding: 20px 0;
   overflow-y: auto;
-  border-right: 1px solid #333;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.6s ease-out;
 }
 
 /* Header con logo Apple Music */
@@ -22,16 +30,105 @@
 .apple-music-logo {
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: 18px;
   font-weight: 600;
+  flex-direction: column;
+  text-align: center;
 }
 
 .music-icon {
-  margin-right: 8px;
-  font-size: 20px;
+  margin-right: 0;
+  margin-bottom: 8px;
+  width: 60px;
+  height: 60px;
+  filter: brightness(0) saturate(100%) invert(100%);
 }
 
 .music-text {
+  color: #ffffff;
+}
+
+/* Barra di ricerca nella sidebar */
+.sidebar-search {
+  margin-top: 20px;
+}
+
+.sidebar-search .search-bar-container {
+  margin-bottom: 0;
+}
+
+.sidebar-search .search-input-group {
+  max-width: none;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.sidebar-search .search-input-group .input-group-text {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px 0 0 8px;
+  padding: 10px 12px;
+}
+
+.sidebar-search .search-input {
+  font-size: 13px;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  border-radius: 0;
+}
+
+.sidebar-search .search-input:focus {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.sidebar-search .search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sidebar-search .search-button {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 10px 12px;
+  font-size: 0;
+  border-radius: 0 8px 8px 0;
+  transition: all 0.2s ease;
+  width: 0;
+  overflow: hidden;
+}
+
+.sidebar-search .search-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.sidebar-search .search-button:disabled {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.sidebar-search .clear-button {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 10px 8px;
+  transition: all 0.2s ease;
+}
+
+.sidebar-search .clear-button:hover {
+  background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
 }
 
@@ -46,20 +143,63 @@
   padding: 12px 15px;
   color: #b3b3b3 !important;
   text-decoration: none;
-  border-radius: 8px;
-  margin-bottom: 2px;
-  transition: all 0.2s ease;
+  border-radius: 12px;
+  margin-bottom: 4px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
 }
 
 .sidebar-link:hover {
-  background-color: #2a2a2a;
+  background: linear-gradient(
+    135deg,
+    rgba(42, 42, 42, 0.8) 0%,
+    rgba(60, 60, 60, 0.6) 100%
+  );
   color: #ffffff !important;
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(255, 59, 48, 0.2);
+}
+
+.sidebar-link:hover::before {
+  left: 100%;
 }
 
 .sidebar-link.active {
-  background-color: #ff3b30;
+  background: linear-gradient(135deg, #ff3b30 0%, #ff6b47 100%);
   color: #ffffff !important;
+  box-shadow: 0 4px 20px rgba(255, 59, 48, 0.4);
+  transform: translateX(8px);
+}
+
+.sidebar-link.active::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  background: #ffffff;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .nav-icon {
@@ -98,29 +238,29 @@
     border-right: none;
     border-bottom: 1px solid #333;
   }
-  
+
   .sidebar-nav {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
   }
-  
+
   .sidebar-link {
     flex: 1;
     min-width: calc(50% - 5px);
     justify-content: center;
     text-align: center;
   }
-  
+
   .nav-text {
     display: none;
   }
-  
+
   .nav-icon {
     margin-right: 0;
     font-size: 20px;
   }
-  
+
   .sidebar-section {
     display: none;
   }

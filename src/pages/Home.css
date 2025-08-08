@@ -136,8 +136,12 @@
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsive */
@@ -145,50 +149,50 @@
   .home-page {
     padding-bottom: 120px;
   }
-  
+
   .home-header {
     padding: 20px 0;
     margin-bottom: 20px;
   }
-  
+
   .page-title {
     font-size: 32px;
   }
-  
+
   .page-subtitle {
     font-size: 16px;
   }
-  
+
   .section-title {
     font-size: 20px;
     margin-bottom: 15px;
   }
-  
+
   .featured-card {
     height: 150px;
     margin-bottom: 15px;
   }
-  
+
   .featured-content {
     padding: 15px;
   }
-  
+
   .featured-text h3 {
     font-size: 20px;
   }
-  
+
   .featured-text p {
     font-size: 14px;
   }
-  
+
   .chill-avatar {
     font-size: 40px;
   }
-  
+
   .musica-uno-avatars .avatar {
     font-size: 35px;
   }
-  
+
   .search-results-section,
   .radio-episodes-section,
   .new-releases-section {
@@ -200,35 +204,35 @@
   .page-title {
     font-size: 28px;
   }
-  
+
   .page-subtitle {
     font-size: 14px;
   }
-  
+
   .section-title {
     font-size: 18px;
   }
-  
+
   .featured-card {
     height: 120px;
   }
-  
+
   .featured-text h3 {
     font-size: 18px;
   }
-  
+
   .featured-text p {
     font-size: 12px;
   }
-  
+
   .chill-avatar {
     font-size: 30px;
   }
-  
+
   .musica-uno-avatars .avatar {
     font-size: 25px;
   }
-  
+
   .musica-uno-avatars {
     gap: 5px;
   }
@@ -254,4 +258,53 @@
 
 .featured-sections {
   animation: fadeInUp 0.4s ease;
+}
+
+/* Sezione Altro da esplorare */
+.explore-section {
+  margin-bottom: 50px;
+}
+
+.explore-section .section-title {
+  padding-left: 0;
+}
+
+.explore-section .explore-grid {
+  padding: 0 20px;
+}
+
+.explore-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  background: transparent;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.explore-item {
+  background: transparent;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-radius: 8px;
+  border: none;
+}
+
+.explore-item:hover {
+  background: transparent;
+}
+
+.explore-text {
+  font-size: 14px;
+  color: #ff0000;
+  font-weight: 400;
+}
+
+.chevron-right {
+  color: #666666;
+  font-size: 16px;
 }

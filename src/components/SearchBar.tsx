@@ -1,8 +1,8 @@
-import React, { useState, useCallback } from 'react';
-import { Form, InputGroup, Button, Spinner } from 'react-bootstrap';
-import { DeezerApiService } from '../services/deezerApi';
-import { Track } from '../store/favoritesSlice';
-import './SearchBar.css';
+import React, { useState, useCallback } from "react";
+import { Form, InputGroup, Button, Spinner } from "react-bootstrap";
+import { DeezerApiService } from "../services/deezerApi";
+import { Track } from "../store/favoritesSlice";
+import "./SearchBar.css";
 
 // Props per il componente SearchBar
 interface SearchBarProps {
@@ -11,35 +11,38 @@ interface SearchBarProps {
 }
 
 // Componente per la barra di ricerca
-const SearchBar: React.FC<SearchBarProps> = ({ 
-  onSearchResults, 
-  placeholder = "Cerca brani, artisti, album..." 
+const SearchBar: React.FC<SearchBarProps> = ({
+  onSearchResults,
+  placeholder = "Cerca brani, artisti, album...",
 }) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   // Gestisce la ricerca
-  const handleSearch = useCallback(async (searchQuery: string) => {
-    if (!searchQuery.trim()) {
-      onSearchResults([]);
-      return;
-    }
+  const handleSearch = useCallback(
+    async (searchQuery: string) => {
+      if (!searchQuery.trim()) {
+        onSearchResults([]);
+        return;
+      }
 
-    setIsLoading(true);
-    setError(null);
+      setIsLoading(true);
+      setError(null);
 
-    try {
-      const results = await DeezerApiService.searchTracks(searchQuery);
-      onSearchResults(results);
-    } catch (err) {
-      setError('Errore durante la ricerca. Riprova.');
-      console.error('Errore ricerca:', err);
-      onSearchResults([]);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [onSearchResults]);
+      try {
+        const results = await DeezerApiService.searchTracks(searchQuery);
+        onSearchResults(results);
+      } catch (err) {
+        setError("Errore durante la ricerca. Riprova.");
+        console.error("Errore ricerca:", err);
+        onSearchResults([]);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [onSearchResults]
+  );
 
   // Gestisce il submit del form
   const handleSubmit = (e: React.FormEvent) => {
@@ -51,7 +54,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newQuery = e.target.value;
     setQuery(newQuery);
-    
+
     // Ricerca automatica dopo 500ms di inattività
     const timeoutId = setTimeout(() => {
       handleSearch(newQuery);
@@ -63,7 +66,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
   // Gestisce la pulizia della ricerca
   const handleClear = () => {
-    setQuery('');
+    setQuery("");
     setError(null);
     onSearchResults([]);
   };
@@ -72,10 +75,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
     <div className="search-bar-container">
       <Form onSubmit={handleSubmit}>
         <InputGroup className="search-input-group">
-          <InputGroup.Text className="search-icon">
-            🔍
-          </InputGroup.Text>
-          
+          <InputGroup.Text className="search-icon">🔍</InputGroup.Text>
+
           <Form.Control
             type="text"
             placeholder={placeholder}
@@ -84,10 +85,10 @@ const SearchBar: React.FC<SearchBarProps> = ({
             className="search-input"
             disabled={isLoading}
           />
-          
+
           {query && (
-            <Button 
-              variant="outline-secondary" 
+            <Button
+              variant="outline-secondary"
               onClick={handleClear}
               className="clear-button"
               disabled={isLoading}
@@ -95,28 +96,20 @@ const SearchBar: React.FC<SearchBarProps> = ({
               ✕
             </Button>
           )}
-          
-          <Button 
-            variant="primary" 
-            type="submit" 
+
+          <Button
+            variant="primary"
+            type="submit"
             disabled={isLoading || !query.trim()}
             className="search-button"
           >
-            {isLoading ? (
-              <Spinner animation="border" size="sm" />
-            ) : (
-              'Cerca'
-            )}
+            {isLoading ? <Spinner animation="border" size="sm" /> : "Cerca"}
           </Button>
         </InputGroup>
       </Form>
-      
-      {error && (
-        <div className="search-error">
-          {error}
-        </div>
-      )}
-      
+
+      {error && <div className="search-error">{error}</div>}
+
       {isLoading && (
         <div className="search-loading">
           <Spinner animation="border" size="sm" className="me-2" />

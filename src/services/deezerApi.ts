@@ -49,11 +49,13 @@ export class DeezerApiService {
   // Ottiene brani casuali per genere (simulato con ricerche predefinite)
   static async getRandomTracksByGenre(genre: string): Promise<Track[]> {
     const genres = {
-      pop: ['taylor swift', 'ed sheeran', 'ariana grande'],
-      rock: ['queen', 'the beatles', 'led zeppelin'],
-      jazz: ['miles davis', 'john coltrane', 'ella fitzgerald'],
-      electronic: ['daft punk', 'calvin harris', 'deadmau5'],
-      hip_hop: ['eminem', 'drake', 'kendrick lamar']
+      pop: ['taylor swift', 'ed sheeran', 'ariana grande', 'dua lipa', 'billie eilish', 'olivia rodrigo', 'harry styles', 'bruno mars'],
+      rock: ['queen', 'the beatles', 'led zeppelin', 'coldplay', 'imagine dragons', 'maroon 5', 'onerepublic', 'linkin park'],
+      jazz: ['miles davis', 'john coltrane', 'ella fitzgerald', 'frank sinatra', 'louis armstrong', 'duke ellington'],
+      electronic: ['daft punk', 'calvin harris', 'deadmau5', 'david guetta', 'martin garrix', 'the chainsmokers', 'marshmello', 'skrillex'],
+      hip_hop: ['eminem', 'drake', 'kendrick lamar', 'post malone', 'travis scott', 'j cole', 'kanye west', 'lil wayne'],
+      r_and_b: ['beyonce', 'rihanna', 'the weeknd', 'sza', 'frank ocean', 'alicia keys', 'john legend', 'usher'],
+      latin: ['bad bunny', 'j balvin', 'ozuna', 'maluma', 'daddy yankee', 'karol g', 'rosalia', 'shakira']
     };
 
     const artists = genres[genre as keyof typeof genres] || genres.pop;

@@ -85,29 +85,7 @@ const MusicCard: React.FC<MusicCardProps> = ({
         </div>
       </div>
       
-      <Card.Body className="card-content">
-        <Card.Title className="track-title">
-          {track.title_short}
-        </Card.Title>
-        
-        {showArtist && (
-          <Card.Text className="track-artist">
-            {track.artist.name}
-          </Card.Text>
-        )}
-        
-        <div className="track-info">
-          <span className="track-duration">
-            {formatDuration(track.duration)}
-          </span>
-          
-          {track.album.title && (
-            <span className="track-album">
-              {track.album.title}
-            </span>
-          )}
-        </div>
-      </Card.Body>
+
     </Card>
   );
 };

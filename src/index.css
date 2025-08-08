@@ -14,23 +14,70 @@
   
   /* Variabili CSS per i colori */
   --primary-color: #ff3b30;
+  --primary-gradient: linear-gradient(135deg, #ff3b30 0%, #ff6b47 100%);
   --secondary-color: #ff6b47;
+  --accent-color: #ff9500;
   --background-dark: #000000;
   --background-medium: #1a1a1a;
   --background-light: #2a2a2a;
+  --background-gradient: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2a2a2a 100%);
   --text-primary: #ffffff;
   --text-secondary: #b3b3b3;
   --text-muted: #666666;
   --border-color: #333333;
+  --shadow-light: rgba(255, 255, 255, 0.1);
+  --shadow-dark: rgba(0, 0, 0, 0.5);
+  --glow-primary: rgba(255, 59, 48, 0.3);
   
   color-scheme: dark;
   color: var(--text-primary);
-  background-color: var(--background-dark);
+  background: var(--background-gradient);
   
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animazioni globali */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--glow-primary);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--glow-primary), 0 0 40px var(--glow-primary);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* Elementi base */
