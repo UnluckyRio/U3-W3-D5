@@ -7,19 +7,16 @@ import chillImage from "../assets/images/1a.png";
 import musicaUnoImage from "../assets/images/1b.png";
 import "./Home.css";
 
-
 const Home: React.FC = () => {
   const [searchResults] = useState<Track[]>([]);
   const [featuredTracks, setFeaturedTracks] = useState<Track[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-
 
   useEffect(() => {
     const loadFeaturedTracks = async () => {
       try {
         setIsLoading(true);
 
-      
         const diverseArtists = [
           "adele",
           "bruno mars",
@@ -41,7 +38,6 @@ const Home: React.FC = () => {
           "john legend",
         ];
 
-    
         const shuffledArtists = diverseArtists.sort(() => 0.5 - Math.random());
         const popularArtists = shuffledArtists.slice(0, 6);
         const promises = popularArtists.map((artist) =>
@@ -51,7 +47,6 @@ const Home: React.FC = () => {
         const results = await Promise.all(promises);
         const allTracks = results.flat();
 
-    
         const uniqueTracks = allTracks
           .filter(
             (track, index, self) =>
@@ -70,13 +65,9 @@ const Home: React.FC = () => {
     loadFeaturedTracks();
   }, []);
 
-
-
-
   return (
     <div className="home-page">
       <Container fluid>
-  
         <Row className="home-header">
           <Col>
             <div className="welcome-section">
@@ -88,7 +79,6 @@ const Home: React.FC = () => {
           </Col>
         </Row>
 
-  
         {searchResults.length > 0 && (
           <Row className="search-results-section">
             <Col>
@@ -102,10 +92,8 @@ const Home: React.FC = () => {
           </Row>
         )}
 
-  
         {searchResults.length === 0 && (
           <>
-    
             <Row className="featured-sections">
               <Col md={6} className="mb-4">
                 <Card className="featured-card chill-card">
@@ -142,7 +130,6 @@ const Home: React.FC = () => {
               </Col>
             </Row>
 
-    
             <Row className="radio-episodes-section">
               <Col>
                 <h2 className="section-title">Nuovi episodi radio</h2>
@@ -169,7 +156,6 @@ const Home: React.FC = () => {
               </Col>
             </Row>
 
-    
             <Row className="new-releases-section">
               <Col>
                 <h2 className="section-title">Nuove uscite</h2>
@@ -196,7 +182,6 @@ const Home: React.FC = () => {
               </Col>
             </Row>
 
-    
             <Row className="explore-section">
               <Col>
                 <h2 className="section-title">Altro da esplorare</h2>

@@ -7,11 +7,8 @@ import "./Sidebar.css";
 
 import musicIconUrl from "../assets/logos/music.svg";
 
-
 const Sidebar: React.FC = () => {
   const location = useLocation();
-
-
 
   const menuItems = [
     { path: "/", label: "Home", icon: "🏠" },
@@ -19,22 +16,19 @@ const Sidebar: React.FC = () => {
     { path: "/radio", label: "Radio", icon: "📻" },
   ];
 
-
   const handleSearchResults = (results: Track[]) => {
-    console.log('Search results:', results);
+    console.log("Search results:", results);
 
     console.log("Risultati ricerca dalla sidebar:", results);
   };
 
   return (
     <div className="sidebar">
-
       <div className="sidebar-header">
         <div className="apple-music-logo">
           <img src={musicIconUrl} alt="Music" className="music-icon" />
         </div>
 
-  
         <div className="sidebar-search">
           <SearchBar
             onSearchResults={handleSearchResults}
@@ -42,7 +36,6 @@ const Sidebar: React.FC = () => {
           />
         </div>
       </div>
-
 
       <Nav className="flex-column sidebar-nav">
         {menuItems.map((item) => (
