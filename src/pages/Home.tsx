@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import MusicCard from "../components/MusicCard";
-import { Track } from "../store/favoritesSlice";
+import type { Track } from "../store/favoritesSlice";
 import { DeezerApiService } from "../services/deezerApi";
 import chillImage from "../assets/images/1a.png";
 import musicaUnoImage from "../assets/images/1b.png";
 import "./Home.css";
 
-// Componente della homepage
+
 const Home: React.FC = () => {
-  const [searchResults, setSearchResults] = useState<Track[]>([]);
+  const [searchResults] = useState<Track[]>([]);
   const [featuredTracks, setFeaturedTracks] = useState<Track[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Carica i brani in evidenza all'avvio
+
   useEffect(() => {
     const loadFeaturedTracks = async () => {
       try {
         setIsLoading(true);
 
-        // Carica brani di artisti diversi e casuali
+      
         const diverseArtists = [
           "adele",
           "bruno mars",
@@ -41,7 +41,7 @@ const Home: React.FC = () => {
           "john legend",
         ];
 
-        // Seleziona 6 artisti casuali dalla lista
+    
         const shuffledArtists = diverseArtists.sort(() => 0.5 - Math.random());
         const popularArtists = shuffledArtists.slice(0, 6);
         const promises = popularArtists.map((artist) =>
@@ -51,7 +51,7 @@ const Home: React.FC = () => {
         const results = await Promise.all(promises);
         const allTracks = results.flat();
 
-        // Prendi i primi 12 brani unici
+    
         const uniqueTracks = allTracks
           .filter(
             (track, index, self) =>
@@ -70,15 +70,13 @@ const Home: React.FC = () => {
     loadFeaturedTracks();
   }, []);
 
-  // Gestisce i risultati della ricerca
-  const handleSearchResults = (results: Track[]) => {
-    setSearchResults(results);
-  };
+
+
 
   return (
     <div className="home-page">
       <Container fluid>
-        {/* Header con ricerca */}
+  
         <Row className="home-header">
           <Col>
             <div className="welcome-section">
@@ -90,7 +88,7 @@ const Home: React.FC = () => {
           </Col>
         </Row>
 
-        {/* Risultati della ricerca */}
+  
         {searchResults.length > 0 && (
           <Row className="search-results-section">
             <Col>
@@ -104,10 +102,10 @@ const Home: React.FC = () => {
           </Row>
         )}
 
-        {/* Sezioni principali */}
+  
         {searchResults.length === 0 && (
           <>
-            {/* Sezione Chill e Musica Uno */}
+    
             <Row className="featured-sections">
               <Col md={6} className="mb-4">
                 <Card className="featured-card chill-card">
@@ -144,7 +142,7 @@ const Home: React.FC = () => {
               </Col>
             </Row>
 
-            {/* Nuovi episodi radio */}
+    
             <Row className="radio-episodes-section">
               <Col>
                 <h2 className="section-title">Nuovi episodi radio</h2>
@@ -171,7 +169,7 @@ const Home: React.FC = () => {
               </Col>
             </Row>
 
-            {/* Nuove uscite */}
+    
             <Row className="new-releases-section">
               <Col>
                 <h2 className="section-title">Nuove uscite</h2>
@@ -198,7 +196,7 @@ const Home: React.FC = () => {
               </Col>
             </Row>
 
-            {/* Altro da esplorare */}
+    
             <Row className="explore-section">
               <Col>
                 <h2 className="section-title">Altro da esplorare</h2>

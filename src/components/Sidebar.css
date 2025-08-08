@@ -1,4 +1,3 @@
-/* Stili per la Sidebar */
 .sidebar {
   background: linear-gradient(
     135deg,
@@ -20,7 +19,7 @@
   animation: slideIn 0.6s ease-out;
 }
 
-/* Header con logo Apple Music */
+
 .sidebar-header {
   padding: 0 20px 30px 20px;
   border-bottom: 1px solid #333;
@@ -40,16 +39,22 @@
 .music-icon {
   margin-right: 0;
   margin-bottom: 8px;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   filter: brightness(0) saturate(100%) invert(100%);
+  transition: all 0.3s ease;
+}
+
+.music-icon:hover {
+  transform: scale(1.1);
+  filter: brightness(0) saturate(100%) invert(100%) drop-shadow(0 4px 8px rgba(255, 59, 48, 0.3));
 }
 
 .music-text {
   color: #ffffff;
 }
 
-/* Barra di ricerca nella sidebar */
+
 .sidebar-search {
   margin-top: 20px;
 }
@@ -132,7 +137,7 @@
   color: #ffffff;
 }
 
-/* Navigazione */
+
 .sidebar-nav {
   padding: 0 10px;
 }
@@ -213,7 +218,7 @@
   font-weight: 400;
 }
 
-/* Sezione "Altro da esplorare" */
+
 .sidebar-section {
   margin-top: 30px;
   padding: 0 10px;
@@ -229,7 +234,30 @@
   padding: 0 15px;
 }
 
-/* Responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .sidebar {
+    width: 200px;
+  }
+  
+  .music-icon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .sidebar-link {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+  
+  .nav-icon {
+    font-size: 15px;
+  }
+  
+  .sidebar-section-title {
+    font-size: 11px;
+  }
+}
+
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
@@ -237,32 +265,78 @@
     position: relative;
     border-right: none;
     border-bottom: 1px solid #333;
+    padding: 10px 0;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+  }
+  
+  .music-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
   }
 
   .sidebar-nav {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
+    padding: 0 10px;
   }
 
   .sidebar-link {
     flex: 1;
-    min-width: calc(50% - 5px);
+    min-width: calc(25% - 5px);
     justify-content: center;
     text-align: center;
+    padding: 8px 4px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  
+  .sidebar-link:hover {
+    background: rgba(255, 59, 48, 0.1);
   }
 
   .nav-text {
-    display: none;
+    display: block;
+    font-size: 10px;
+    margin-top: 2px;
+    font-weight: 400;
   }
 
   .nav-icon {
     margin-right: 0;
-    font-size: 20px;
+    font-size: 18px;
+    display: block;
   }
 
   .sidebar-section {
     display: none;
+  }
+  
+  .sidebar-search {
+    margin-top: 10px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-link {
+    min-width: calc(20% - 5px);
+    padding: 6px 2px;
+  }
+  
+  .nav-text {
+    font-size: 9px;
+  }
+  
+  .nav-icon {
+    font-size: 16px;
+  }
+  
+  .music-icon {
+    width: 40px;
+    height: 40px;
   }
 }
 

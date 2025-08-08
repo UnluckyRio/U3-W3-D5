@@ -1,12 +1,11 @@
-/* Stili per la Homepage */
 .home-page {
   background-color: #000000;
   color: #ffffff;
   min-height: 100vh;
-  padding-bottom: 100px; /* Spazio per il player */
+  padding-bottom: 100px;
 }
 
-/* Header */
+
 .home-header {
   padding: 40px 0;
   background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
@@ -33,7 +32,7 @@
   font-weight: 300;
 }
 
-/* Sezioni */
+
 .section-title {
   font-size: 24px;
   font-weight: 600;
@@ -48,7 +47,7 @@
   margin-bottom: 50px;
 }
 
-/* Card in evidenza */
+
 .featured-sections {
   margin-bottom: 50px;
   padding: 0 15px;
@@ -119,7 +118,7 @@
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
 }
 
-/* Loading spinner */
+
 .loading-spinner {
   color: #b3b3b3;
   font-size: 18px;
@@ -144,10 +143,65 @@
   }
 }
 
-/* Responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .home-page {
+    padding-bottom: 110px;
+  }
+  
+  .home-header {
+    padding: 30px 0;
+    margin-bottom: 30px;
+  }
+  
+  .page-title {
+    font-size: 42px;
+  }
+  
+  .page-subtitle {
+    font-size: 17px;
+  }
+  
+  .section-title {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+  
+  .featured-card {
+    height: 180px;
+    margin-bottom: 20px;
+  }
+  
+  .featured-content {
+    padding: 20px;
+  }
+  
+  .featured-text h3 {
+    font-size: 22px;
+  }
+  
+  .featured-text p {
+    font-size: 15px;
+  }
+  
+  .chill-avatar {
+    font-size: 50px;
+  }
+  
+  .musica-uno-avatars .avatar {
+    font-size: 40px;
+  }
+  
+  .explore-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px !important;
+  }
+}
+
 @media (max-width: 768px) {
   .home-page {
-    padding-bottom: 120px;
+    padding-bottom: 140px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .home-header {
@@ -157,6 +211,7 @@
 
   .page-title {
     font-size: 32px;
+    margin-bottom: 8px;
   }
 
   .page-subtitle {
@@ -166,6 +221,7 @@
   .section-title {
     font-size: 20px;
     margin-bottom: 15px;
+    padding-left: 5px;
   }
 
   .featured-card {
@@ -179,10 +235,12 @@
 
   .featured-text h3 {
     font-size: 20px;
+    margin-bottom: 8px;
   }
 
   .featured-text p {
     font-size: 14px;
+    line-height: 1.4;
   }
 
   .chill-avatar {
@@ -198,9 +256,33 @@
   .new-releases-section {
     margin-bottom: 30px;
   }
+  
+  .explore-grid {
+    grid-template-columns: 1fr;
+    gap: 12px !important;
+    padding: 0 10px;
+  }
+  
+  .explore-item {
+    padding: 14px 16px;
+  }
+  
+  .explore-text {
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 480px) {
+  .home-page {
+    padding-bottom: 160px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  
+  .home-header {
+    padding: 15px 0;
+  }
+
   .page-title {
     font-size: 28px;
   }
@@ -211,18 +293,26 @@
 
   .section-title {
     font-size: 18px;
+    margin-bottom: 12px;
   }
 
   .featured-card {
     height: 120px;
+    margin-bottom: 12px;
+  }
+  
+  .featured-content {
+    padding: 12px;
   }
 
   .featured-text h3 {
     font-size: 18px;
+    margin-bottom: 6px;
   }
 
   .featured-text p {
     font-size: 12px;
+    line-height: 1.3;
   }
 
   .chill-avatar {
@@ -236,9 +326,23 @@
   .musica-uno-avatars {
     gap: 5px;
   }
+  
+  .search-results-section,
+  .radio-episodes-section,
+  .new-releases-section {
+    margin-bottom: 25px;
+  }
+  
+  .explore-item {
+    padding: 12px 14px;
+  }
+  
+  .explore-text {
+    font-size: 14px;
+  }
 }
 
-/* Animazioni */
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -260,7 +364,7 @@
   animation: fadeInUp 0.4s ease;
 }
 
-/* Sezione Altro da esplorare */
+
 .explore-section {
   margin-bottom: 50px;
 }
@@ -288,7 +392,7 @@
     26,
     26,
     0.8
-  ) !important; /* Sfondo grigio simile alla sidebar */
+  ) !important;
   padding: 16px 20px;
   display: flex;
   justify-content: space-between;
@@ -296,20 +400,20 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
   border-radius: 8px;
-  border: none; /* Nessun bordo */
+  border: none;
 }
 
 .explore-item:hover {
-  background: rgba(42, 42, 42, 0.9) !important; /* Sfondo più chiaro al hover */
+  background: rgba(42, 42, 42, 0.9) !important;
 }
 
 .explore-text {
   font-size: 14px;
-  color: var(--primary-color) !important; /* Usa il colore primario dell'app */
+  color: var(--primary-color) !important;
   font-weight: 400;
 }
 
 .chevron-right {
-  color: var(--primary-color) !important; /* Colore rosso coerente con il tema */
+  color: var(--primary-color) !important;
   font-size: 16px;
 }

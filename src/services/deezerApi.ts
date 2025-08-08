@@ -1,18 +1,18 @@
-import { Track } from '../store/favoritesSlice';
+import type { Track } from '../store/favoritesSlice';
 
-// URL base dell'API Deezer
+
 const BASE_URL = 'https://striveschool-api.herokuapp.com/api/deezer';
 
-// Interfaccia per la risposta dell'API
+
 interface DeezerResponse {
   data: Track[];
   total: number;
   next?: string;
 }
 
-// Servizio per le chiamate API
+
 export class DeezerApiService {
-  // Cerca brani per query
+
   static async searchTracks(query: string): Promise<Track[]> {
     try {
       const response = await fetch(`${BASE_URL}/search?q=${encodeURIComponent(query)}`);
@@ -29,7 +29,7 @@ export class DeezerApiService {
     }
   }
 
-  // Ottiene i brani più popolari di un artista
+
   static async getArtistTopTracks(artistId: number): Promise<Track[]> {
     try {
       const response = await fetch(`${BASE_URL}/artist/${artistId}/top?limit=50`);
@@ -46,7 +46,7 @@ export class DeezerApiService {
     }
   }
 
-  // Ottiene brani casuali per genere (simulato con ricerche predefinite)
+
   static async getRandomTracksByGenre(genre: string): Promise<Track[]> {
     const genres = {
       pop: ['taylor swift', 'ed sheeran', 'ariana grande', 'dua lipa', 'billie eilish', 'olivia rodrigo', 'harry styles', 'bruno mars'],

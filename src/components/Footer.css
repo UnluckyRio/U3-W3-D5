@@ -1,9 +1,8 @@
-/* Stili per il Footer simile a Apple Music */
 .app-footer {
-  background-color: #1a1a1a; /* Sfondo scuro simile alla sidebar */
-  color: #8e8e93; /* Testo grigio chiaro */
+  background-color: #1a1a1a;
+  color: #8e8e93;
   padding: 40px 20px 20px;
-  margin-top: 0; /* Rimosso margine per far arrivare il contenuto fino al footer */
+  margin-top: 0;
   border-top: 1px solid #2c2c2e;
 }
 
@@ -12,7 +11,7 @@
   margin: 0 auto;
 }
 
-/* Sezione lingue */
+
 .footer-languages {
   margin-bottom: 20px;
 }
@@ -30,7 +29,7 @@
   text-decoration: underline;
 }
 
-/* Copyright */
+
 .footer-copyright {
   margin-bottom: 20px;
 }
@@ -41,7 +40,7 @@
   color: #8e8e93;
 }
 
-/* Links del footer */
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;
@@ -60,20 +59,79 @@
   text-decoration: underline;
 }
 
-/* Responsive design */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .app-footer {
+    padding: 40px 30px 20px;
+  }
+  
+  .footer-links {
+    gap: 15px;
+  }
+  
+  .footer-link {
+    font-size: 13px;
+  }
+  
+  .footer-copyright {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 768px) {
+  .app-footer {
+    padding: 30px 15px 15px;
+    text-align: center;
+  }
+  
   .footer-links {
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  .footer-languages {
+    margin-bottom: 20px;
   }
   
   .footer-languages .footer-link {
-    display: block;
-    margin-bottom: 10px;
-    margin-right: 0;
+    display: inline-block;
+    margin: 5px 10px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    transition: all 0.2s ease;
   }
   
+  .footer-languages .footer-link:hover {
+    background: rgba(255, 59, 48, 0.2);
+    transform: translateY(-1px);
+  }
+  
+  .footer-copyright {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (max-width: 480px) {
   .app-footer {
-    padding: 30px 15px 15px;
+    padding: 25px 12px 12px;
+  }
+  
+  .footer-languages .footer-link {
+    margin: 3px 5px;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  .footer-link {
+    font-size: 12px;
+  }
+  
+  .footer-copyright {
+    font-size: 11px;
+    margin-top: 15px;
+    padding-top: 12px;
   }
 }

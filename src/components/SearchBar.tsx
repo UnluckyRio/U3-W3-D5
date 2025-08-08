@@ -1,16 +1,16 @@
 import React, { useState, useCallback } from "react";
 import { Form, InputGroup, Button, Spinner } from "react-bootstrap";
 import { DeezerApiService } from "../services/deezerApi";
-import { Track } from "../store/favoritesSlice";
+import type { Track } from "../store/favoritesSlice";
 import "./SearchBar.css";
 
-// Props per il componente SearchBar
+
 interface SearchBarProps {
   onSearchResults: (results: Track[]) => void;
   placeholder?: string;
 }
 
-// Componente per la barra di ricerca
+
 const SearchBar: React.FC<SearchBarProps> = ({
   onSearchResults,
   placeholder = "Cerca brani, artisti, album...",
@@ -19,7 +19,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Gestisce la ricerca
+
   const handleSearch = useCallback(
     async (searchQuery: string) => {
       if (!searchQuery.trim()) {
@@ -44,27 +44,27 @@ const SearchBar: React.FC<SearchBarProps> = ({
     [onSearchResults]
   );
 
-  // Gestisce il submit del form
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     handleSearch(query);
   };
 
-  // Gestisce il cambio del testo
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newQuery = e.target.value;
     setQuery(newQuery);
 
-    // Ricerca automatica dopo 500ms di inattività
+
     const timeoutId = setTimeout(() => {
       handleSearch(newQuery);
     }, 500);
 
-    // Cleanup del timeout precedente
+
     return () => clearTimeout(timeoutId);
   };
 
-  // Gestisce la pulizia della ricerca
+
   const handleClear = () => {
     setQuery("");
     setError(null);

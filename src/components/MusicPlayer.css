@@ -1,4 +1,3 @@
-/* Stili per il Music Player */
 .music-player {
   position: fixed;
   bottom: 0;
@@ -35,7 +34,7 @@
   }
 }
 
-/* Sezione informazioni brano */
+
 .track-info-section {
   display: flex;
   align-items: center;
@@ -133,7 +132,7 @@
   color: rgba(255, 59, 48, 0.8);
 }
 
-/* Sezione controlli */
+
 .player-controls-section {
   text-align: center;
 }
@@ -215,7 +214,7 @@
   outline: none;
 }
 
-/* Sezione progresso */
+
 .progress-section {
   display: flex;
   align-items: center;
@@ -345,7 +344,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-/* Sezione volume */
+
 .volume-section {
   display: flex;
   justify-content: flex-end;
@@ -504,76 +503,175 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
-/* Responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .music-player {
+    padding: 12px 20px;
+    gap: 15px;
+  }
+  
+  .player-album-art {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .player-track-title {
+    font-size: 15px;
+  }
+  
+  .player-track-artist {
+    font-size: 13px;
+  }
+  
+  .control-button {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .progress-section {
+    max-width: 400px;
+  }
+  
+  .volume-controls {
+    max-width: 150px;
+  }
+}
+
 @media (max-width: 768px) {
   .music-player {
-    padding: 10px 0;
+    padding: 12px 15px;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+  }
+  
+  .music-player-content {
+    flex-direction: column;
+    gap: 12px;
   }
 
   .track-info-section {
-    margin-bottom: 10px;
+    order: 1;
+    justify-content: center;
+    text-align: center;
   }
 
   .player-controls-section {
-    margin-bottom: 10px;
+    order: 2;
+    justify-content: center;
   }
 
   .volume-section {
+    order: 3;
     justify-content: center;
   }
 
   .player-album-art {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
+    width: 45px;
+    height: 45px;
+    margin-right: 12px;
   }
 
   .player-track-title {
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 600;
   }
 
   .player-track-artist {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .control-button {
-    width: 35px;
-    height: 35px;
-    font-size: 14px;
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+  }
+  
+  .play-pause-button {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
   }
 
   .progress-section {
-    max-width: 300px;
+    max-width: 100%;
+    width: 100%;
+    order: 4;
+  }
+  
+  .progress-bar {
+    height: 6px;
+  }
+  
+  .time-display {
+    font-size: 11px;
+  }
+  
+  .volume-controls {
+    max-width: 200px;
+  }
+  
+  .volume-slider {
+    width: 100px;
   }
 }
 
 @media (max-width: 480px) {
   .music-player {
-    padding: 8px 0;
+    padding: 10px 12px;
+    gap: 10px;
   }
 
   .player-controls {
-    gap: 10px;
-    margin-bottom: 8px;
+    gap: 8px;
+  }
+  
+  .control-button {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+  
+  .play-pause-button {
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
   }
 
   .progress-section {
-    max-width: 250px;
     gap: 8px;
   }
 
   .time-display {
     font-size: 10px;
-    min-width: 30px;
+    min-width: 32px;
   }
 
   .volume-controls {
-    max-width: 120px;
+    max-width: 160px;
     gap: 8px;
+  }
+  
+  .volume-slider {
+    width: 80px;
   }
 
   .volume-display {
     font-size: 10px;
-    min-width: 25px;
+    min-width: 28px;
+  }
+  
+  .player-album-art {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .player-track-title {
+    font-size: 13px;
+  }
+  
+  .player-track-artist {
+    font-size: 11px;
   }
 }
