@@ -70,11 +70,56 @@ const MusicPlayer: React.FC = () => {
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
+  // Stato per memorizzare il volume precedente prima del mute
+  const [previousVolume, setPreviousVolume] = React.useState<number>(volume);
+
   // Gestisce il cambio volume
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseInt(e.target.value);
     dispatch(setVolume(newVolume));
+    
+    // Memorizza il volume precedente se non è 0
+    if (newVolume > 0) {
+      setPreviousVolume(newVolume);
+    }
+    
+    // Aggiorna la variabile CSS per la larghezza della barra del volume
+    const slider = e.target as HTMLInputElement;
+    slider.style.setProperty('--volume-percentage', `${newVolume}%`);
   };
+
+  // Gestisce il click sull'icona del volume per mute/unmute
+  const handleVolumeIconClick = () => {
+    if (volume === 0) {
+      // Se è mutato, ripristina il volume precedente
+      const volumeToRestore = previousVolume > 0 ? previousVolume : 50;
+      dispatch(setVolume(volumeToRestore));
+      
+      // Aggiorna anche la variabile CSS
+      const slider = document.querySelector('.volume-slider') as HTMLInputElement;
+      if (slider) {
+        slider.style.setProperty('--volume-percentage', `${volumeToRestore}%`);
+      }
+    } else {
+      // Se non è mutato, memorizza il volume corrente e muta
+      setPreviousVolume(volume);
+      dispatch(setVolume(0));
+      
+      // Aggiorna anche la variabile CSS
+      const slider = document.querySelector('.volume-slider') as HTMLInputElement;
+      if (slider) {
+        slider.style.setProperty('--volume-percentage', '0%');
+      }
+    }
+  };
+
+  // Effetto per aggiornare la variabile CSS del volume all'avvio
+  React.useEffect(() => {
+    const slider = document.querySelector('.volume-slider') as HTMLInputElement;
+    if (slider) {
+      slider.style.setProperty('--volume-percentage', `${volume}%`);
+    }
+  }, [volume]);
 
   // Se non c'è un brano corrente, non mostrare il player
   if (!currentTrack) {
@@ -151,7 +196,14 @@ const MusicPlayer: React.FC = () => {
           {/* Controlli volume */}
           <Col xs={12} md={4} className="volume-section">
             <div className="volume-controls">
-              <span className="volume-icon">🔊</span>
+              <span 
+                className="volume-icon"
+                onClick={handleVolumeIconClick}
+                style={{ cursor: 'pointer' }}
+                title={volume === 0 ? 'Riattiva audio' : 'Disattiva audio'}
+              >
+                {volume === 0 ? '🔇' : volume < 30 ? '🔈' : volume < 70 ? '🔉' : '🔊'}
+              </span>
               <input
                 type="range"
                 min="0"
@@ -159,6 +211,8 @@ const MusicPlayer: React.FC = () => {
                 value={volume}
                 onChange={handleVolumeChange}
                 className="volume-slider"
+                style={{'--volume-percentage': `${volume}%`} as React.CSSProperties}
+                title={`Volume: ${volume}%`}
               />
               <span className="volume-display">{volume}%</span>
             </div>

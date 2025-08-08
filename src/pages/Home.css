@@ -276,14 +276,19 @@
 .explore-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  background: transparent;
+  gap: 20px !important;
+  background: transparent !important;
   border-radius: 8px;
   overflow: hidden;
 }
 
 .explore-item {
-  background: transparent;
+  background: rgba(
+    26,
+    26,
+    26,
+    0.8
+  ) !important; /* Sfondo grigio simile alla sidebar */
   padding: 16px 20px;
   display: flex;
   justify-content: space-between;
@@ -291,20 +296,20 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
   border-radius: 8px;
-  border: none;
+  border: none; /* Nessun bordo */
 }
 
 .explore-item:hover {
-  background: transparent;
+  background: rgba(42, 42, 42, 0.9) !important; /* Sfondo più chiaro al hover */
 }
 
 .explore-text {
   font-size: 14px;
-  color: #ff0000;
+  color: var(--primary-color) !important; /* Usa il colore primario dell'app */
   font-weight: 400;
 }
 
 .chevron-right {
-  color: #666666;
+  color: var(--primary-color) !important; /* Colore rosso coerente con il tema */
   font-size: 16px;
 }
