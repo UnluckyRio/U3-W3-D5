@@ -1,0 +1,160 @@
+/* Stili per la Search Bar */
+.search-bar-container {
+  margin-bottom: 30px;
+}
+
+.search-input-group {
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.search-input-group .input-group-text {
+  background-color: #2a2a2a;
+  border: none;
+  color: #b3b3b3;
+  border-radius: 25px 0 0 25px;
+  padding: 12px 15px;
+}
+
+.search-icon {
+  font-size: 16px;
+}
+
+.search-input {
+  background-color: #2a2a2a;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 12px 15px;
+}
+
+.search-input:focus {
+  background-color: #2a2a2a;
+  border: none;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.search-input::placeholder {
+  color: #666;
+  font-style: italic;
+}
+
+.clear-button {
+  background-color: #2a2a2a;
+  border: none;
+  color: #b3b3b3;
+  padding: 12px 10px;
+  transition: all 0.2s ease;
+}
+
+.clear-button:hover {
+  background-color: #3a3a3a;
+  color: #ffffff;
+}
+
+.search-button {
+  background: linear-gradient(135deg, #ff3b30 0%, #ff6b47 100%);
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 0 25px 25px 0;
+  transition: all 0.2s ease;
+}
+
+.search-button:hover {
+  background: linear-gradient(135deg, #e6342a 0%, #e55a3f 100%);
+  transform: translateY(-1px);
+}
+
+.search-button:disabled {
+  background: #666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Messaggi di stato */
+.search-error {
+  background-color: rgba(255, 59, 48, 0.1);
+  border: 1px solid rgba(255, 59, 48, 0.3);
+  color: #ff3b30;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.search-loading {
+  color: #b3b3b3;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-input-group {
+    max-width: 100%;
+    margin: 0;
+  }
+  
+  .search-input {
+    font-size: 16px; /* Previene lo zoom su iOS */
+  }
+  
+  .search-button {
+    padding: 12px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-input-group .input-group-text,
+  .search-input,
+  .clear-button,
+  .search-button {
+    padding: 10px 12px;
+  }
+  
+  .search-button {
+    font-size: 13px;
+  }
+  
+  .search-error,
+  .search-loading {
+    font-size: 13px;
+    margin-top: 8px;
+  }
+}
+
+/* Animazioni */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-error,
+.search-loading {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Focus states per accessibilità */
+.search-input:focus,
+.clear-button:focus,
+.search-button:focus {
+  outline: 2px solid #ff3b30;
+  outline-offset: 2px;
+}

@@ -1,0 +1,198 @@
+/* Stili per le Music Card */
+.music-card {
+  background-color: #1a1a1a;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.music-card:hover {
+  background-color: #2a2a2a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.music-card.playing {
+  border: 2px solid #ff3b30;
+  box-shadow: 0 0 20px rgba(255, 59, 48, 0.3);
+}
+
+/* Dimensioni delle card */
+.music-card-small {
+  max-width: 150px;
+}
+
+.music-card-medium {
+  max-width: 200px;
+}
+
+.music-card-large {
+  max-width: 250px;
+}
+
+/* Container dell'immagine */
+.card-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.music-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+/* Overlay con controlli */
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.music-card:hover .card-overlay {
+  opacity: 1;
+}
+
+/* Pulsanti nell'overlay */
+.play-button {
+  background-color: #ff3b30;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.play-button:hover {
+  background-color: #e6342a;
+  transform: scale(1.1);
+}
+
+.favorite-button {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.favorite-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* Contenuto della card */
+.card-content {
+  padding: 15px;
+  color: #ffffff;
+}
+
+.track-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track-artist {
+  font-size: 14px;
+  color: #b3b3b3;
+  margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #666;
+}
+
+.track-duration {
+  font-weight: 500;
+}
+
+.track-album {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .music-card-small,
+  .music-card-medium,
+  .music-card-large {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .card-overlay {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  
+  .play-button {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+  
+  .favorite-button {
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-content {
+    padding: 10px;
+  }
+  
+  .track-title {
+    font-size: 14px;
+  }
+  
+  .track-artist {
+    font-size: 12px;
+  }
+  
+  .track-info {
+    font-size: 11px;
+  }
+}
